@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置命名空间，区别名称 -->
+<mapper namespace="com.yangyao.backoffice.mapper.CarparkingdataMapper">
+
+    <sql id="carparkdata">
+       devid,
+        devGroupId,
+          recTime,
+          ztChangeTime,
+          carid,
+          cwstatu,
+          carparkId,
+          c_X,
+          c_Y,
+          memo
+    </sql>
+    <sql id="carparkingdata">
+       devid,
+        devGroupId,
+          recTime,
+          ztChangeTime,
+          carid,
+          cwstatu,
+          carparkId,
+          c_X,
+          c_Y,
+          memo
+    </sql>
+
+
+    <select id="findCarparkingdataList"  resultType="com.yangyao.backoffice.model.Carparkingdata" parameterType="object">
+        select  <include refid="carparkingdata"/> from carparkingdata limit 0,100
+    </select>
+
+    <select id="finDataByDevid"  resultType="com.yangyao.backoffice.model.Carparkingdata" parameterType="Object">
+        select  <include refid="carparkingdata"/> from carparkingdata where devid=#{devid}
+    </select>
+
+    <insert id="insert" parameterType="com.yangyao.backoffice.model.Carparkingdata" >
+        insert into carparkingdata(<include refid="carparkingdata"/>) value (#{devid},#{devGroupId},#{recTime},#{ztChangeTime},#{carid},#{cwstatu},#{carparkId},#{c_X},#{c_Y},#{memo})
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="com.yangyao.backoffice.model.Carparkingdata">
+        UPDATE carparkingdata
+        SET devGroupId=#{devGroupId},cwstatu=#{cwstatu},carparkId=#{carparkId},recTime=#{recTime},ztChangeTime=#{ztChangeTime},c_X=#{c_X},c_Y=#{c_Y},memo=#{memo},carid=#{carid},recTime=#{recTime},ztChangeTime=#{ztChangeTime}
+        WHERE devid=#{devid}
+    </update>
+
+    <delete id="deleteByDevid" parameterType="Integer">
+        DELETE FROM carparkingdata WHERE devid=#{devid}
+    </delete>
+<!--    recTime=#{recTime},ztChangeTime=#{ztChangeTime},-->
+</mapper>

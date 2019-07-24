@@ -1,0 +1,1 @@
+package com.yangyao.backoffice.mapper;import com.yangyao.backoffice.model.Parkinginfo;import java.util.List;public interface ParkinginfoMapper {    List<Parkinginfo> findParkinginfoList();    int insert(Parkinginfo parkinginfo);    int updateByPrimaryKey(Parkinginfo parkinginfo);    Parkinginfo findByCarparkId(long carparkId);    int delete(Long carparkId);}

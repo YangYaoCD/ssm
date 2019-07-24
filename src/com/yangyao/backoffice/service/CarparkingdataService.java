@@ -1,0 +1,1 @@
+package com.yangyao.backoffice.service;import com.yangyao.backoffice.model.Carparkingdata;import java.util.List;public interface CarparkingdataService {    public List<Carparkingdata> findAllCarparkingdata();    public int saveOrUpdate(Carparkingdata carparkingdata);    public int deleteByID(Integer devid);    Carparkingdata findByDevid(String devid);}

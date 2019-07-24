@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置命名空间，区别名称 -->
+<mapper namespace="com.yangyao.backoffice.mapper.ParkinginfoMapper">
+
+    <sql id="parkinginfo">
+       carparkId,
+        P_X,
+          P_Y,
+          Pwidth,
+          Pheight,
+          memo,
+          time,
+          paddr,
+          owner
+    </sql>
+
+
+    <select id="findParkinginfoList"  resultType="com.yangyao.backoffice.model.Parkinginfo" parameterType="object">
+        select  <include refid="parkinginfo"/> from parkinginfo
+    </select>
+
+    <insert id="insert" parameterType="com.yangyao.backoffice.model.Parkinginfo" >
+        insert into parkinginfo(carparkId,P_X,P_Y,Pwidth,Pheight,memo,time,paddr,owner)
+        value (#{carparkId},#{p_X},#{p_Y},#{pwidth},#{pheight},#{memo},#{time},#{paddr},#{owner})
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="com.yangyao.backoffice.model.Parkinginfo" >
+        UPDATE parkinginfo
+        SET P_X=#{p_X},P_Y=#{p_Y},Pwidth=#{pwidth},Pheight=#{pheight},memo=#{memo},time=#{time},paddr=#{paddr},owner=#{owner}
+        WHERE carparkId=#{carparkId}
+    </update>
+
+    <select id="findByCarparkId"  resultType="com.yangyao.backoffice.model.Parkinginfo" parameterType="object">
+        select  <include refid="parkinginfo"/> from parkinginfo where carparkId=#{carparkId}
+    </select>
+
+    <delete id="delete" parameterType="LONG">
+        DELETE FROM parkinginfo WHERE carparkId=#{carparkId}
+    </delete>
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置命名空间，区别名称 -->
+<mapper namespace="com.yangyao.backoffice.mapper.CarparkdataMapper">
+
+    <sql id="carparkdata">
+       devid,
+        devGroupId,
+          recTime,
+          ztChangeTime,
+          carid,
+          cwstatu,
+          carparkId,
+          c_X,
+          c_Y,
+          memo
+    </sql>
+
+
+    <select id="findCarparkdataList"  resultType="com.yangyao.backoffice.model.Carparkdata" parameterType="object">
+        select  <include refid="carparkdata"/> from carparkdata limit 0,100
+    </select>
+
+    <insert id="insert" parameterType="com.yangyao.backoffice.model.Carparkdata" >
+        insert into carparkdata(<include refid="carparkdata"/>) value (#{devid},#{devGroupId},#{recTime},#{ztChangeTime},#{carid},#{cwstatu},#{carparkId},#{c_X},#{c_Y},#{memo})
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="com.yangyao.backoffice.model.Carparkdata" >
+        UPDATE carparkdata
+        SET devGroupId=#{devGroupId},recTime=#{recTime},ztChangeTime=#{ztChangeTime},carid=#{carid},cwstatu=#{cwstatu},carparkId=#{carparkId},c_X=#{c_X},c_Y={c_Y},memo=#{memo}
+        WHERE devid=#{devid}
+    </update>
+</mapper>

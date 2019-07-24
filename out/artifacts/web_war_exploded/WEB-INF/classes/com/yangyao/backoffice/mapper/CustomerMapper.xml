@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置命名空间，区别名称 -->
+<mapper namespace="com.yangyao.backoffice.mapper.CustomerMapper">
+
+    <sql id="customer">
+       cusid,
+        cname,
+          caddr
+    </sql>
+
+
+    <select id="findAll"  resultType="com.yangyao.backoffice.model.Customer">
+        select  <include refid="customer"/> from customer
+    </select>
+
+    <insert id="add" parameterType="com.yangyao.backoffice.model.Customer" >
+        insert into customer(cname,caddr)
+        value (#{cname},#{caddr})
+    </insert>
+
+    <update id="update" parameterType="com.yangyao.backoffice.model.Customer" >
+        UPDATE customer
+        SET cname=#{cname},caddr=#{caddr}
+        WHERE cusid=#{cusid}
+    </update>
+
+    <select id="getByPrimaryKey"  resultType="com.yangyao.backoffice.model.Customer" parameterType="object">
+        select  <include refid="customer"/> from customer where cusid=#{cusid}
+    </select>
+
+    <delete id="delete" parameterType="LONG">
+        DELETE FROM customer WHERE cusid=#{cusid}
+    </delete>
+</mapper>

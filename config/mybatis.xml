@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 起别名 -->
+	<typeAliases>
+		<!--批量配置别名-->
+		<package name="com.yangyao.backoffice.model"/>
+
+	</typeAliases>
+	
+	<!-- 映射文件mapper -->
+	<mappers>
+		<package name="com.yangyao.backoffice.mapper"/>
+
+	</mappers>
+</configuration>
